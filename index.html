@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>document</title>
+
+    <style>
+        .wrapper {
+            display: grid;
+            grid-template-columns: 50% 50%;
+
+            text-align: center;
+            font-size: 3vmin;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .wrapper div {
+            padding: 2ch;
+        }
+
+        .wrapper img {
+            min-height: 15vh;
+            max-width: 45vw;
+            max-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper"> </div>
+
+    <script>
+
+        let contentDiv = document.getElementsByClassName('wrapper')[0]
+        const imgs = {
+            'Lilith': 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/lilith-john-collier.jpg',
+            'Chloe' : 'https://i.imgur.com/VIYHDL3.jpg',
+            'The Birth of Venus (Alexandre Cabanel)' : 'https://upload.wikimedia.org/wikipedia/commons/f/f6/1863_Alexandre_Cabanel_-_The_Birth_of_Venus.jpg',
+            'Mary Magdalene in the Cave' : 'https://upload.wikimedia.org/wikipedia/commons/c/cd/Mary_Magdalene_In_The_Cave.jpg',
+            'Lady Godiva' : 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/John_Collier_-_Lady_Godiva_-_c_1898_-_Herbert_Art_Gallery_and_Museum.jpg/1200px-John_Collier_-_Lady_Godiva_-_c_1898_-_Herbert_Art_Gallery_and_Museum.jpg',
+            'Diana Suprised' : 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Jules_Lefebvre_-_Diana_sorprendida%2C_1879.jpg/800px-Jules_Lefebvre_-_Diana_sorprendida%2C_1879.jpg',
+            'Water Nymph' : 'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/water-nymph-otto-theodor-gustav-lingner.jpg',
+            'Linda Rhys Vaughn' : 'https://atto.scrolller.com/linda-rhys-vaughn-1982-cgjjmhg3ok-530x800.jpg',
+            'Lorenza Zorer' : 'https://www.bellazon.com/main/uploads/monthly_09_2014/post-24965-0-45973400-1411432530.jpg',
+            'Diana the Huntress' : 'https://upload.wikimedia.org/wikipedia/commons/b/b2/Gaston_Casimir_Saint-Pierre_-_Diana_the_Huntress.jpg',
+            'The Birth of Venus (William-Adolphe Bouguereau)' : 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/William-Adolphe_Bouguereau_%281825-1905%29_-_The_Birth_of_Venus_%281879%29.jpg/800px-William-Adolphe_Bouguereau_%281825-1905%29_-_The_Birth_of_Venus_%281879%29.jpg',
+            "Pharaoh's Handmaidens" : 'https://i.redd.it/jnztrzika6s31.jpg',
+            'After the Bath' : 'https://images.squarespace-cdn.com/content/v1/5ac3c3d2c258b4f1eaa88683/1558458070252-8ODWM2310Y03QKTF3BII/ke17ZwdGBToddI8pDm48kLyhD_1sidRdRiVrThEwIIQUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8GRo6ASst2s6pLvNAu_PZdIxtpW3A2ATnjIuDhUmHpvAQbDgzT8H-RKoOUn9sN8BtiAHP2dWhWfZvlUBuDhbicM/After+the+Bath%5BPre-Raphaelites%5D+William-Adolphe+Bouguereau+oil+on+canvas+1875.jpeg?format=750w',
+            'Venus Anadyomene' : 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/TITIAN_-_Venus_Anadyomene_%28National_Galleries_of_Scotland%2C_c._1520._Oil_on_canvas%2C_75.8_x_57.6_cm%29.jpg/800px-TITIAN_-_Venus_Anadyomene_%28National_Galleries_of_Scotland%2C_c._1520._Oil_on_canvas%2C_75.8_x_57.6_cm%29.jpg',
+            'Venus of Urbino' : 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Tiziano_-_Venere_di_Urbino_-_Google_Art_Project.jpg/1280px-Tiziano_-_Venere_di_Urbino_-_Google_Art_Project.jpg',
+            'The Nude Maja' : 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Goya_Maja_naga2.jpg/1920px-Goya_Maja_naga2.jpg',
+            'zhou xun':"https://i.pinimg.com/originals/0f/97/e4/0f97e4fc68f32c9386f327bb8de68653.jpg",
+            /*Other links to this image:
+            https://pic3.zhimg.com/80/v2-0662390ca70ad7771536b99394e37426_1440w.jpg
+            https://mmbiz.qpic.cn/mmbiz_jpg/WorfXkibdOsId9YcCEpQx540NCfbpick2Ud1AxbY6DTeqgUWjNkeQFUt8ia0oDg7eHaEtq29StzWzmhYXPY7cOXOQ/640?wx_fmt=jpeg
+            */
+
+            'Greek Woman At the Bath' : 'https://uploads7.wikiart.org/images/joseph-marie-vien/greek-woman-at-the-bath-1767.jpg',
+            'Venus Marine' : "https://uploads7.wikiart.org/00337/images/theodore-chasseriau/theodore-chasseriau-venus-anadyomene-or-venus-marine-painting-by-theodore-chasseriau-1819-1856-183.jpg!Large.jpg",
+            "the Bather" : 'https://uploads5.wikiart.org/00340/images/william-adolphe-bouguereau/bather-1.jpg',
+            "A Sculptor's Model" : 'https://uploads7.wikiart.org/images/alma-tadema-lawrence/a-sculptor-s-model-venus-esquilina.jpg',
+            'maine-eugenio' : 'https://sarapbabe.com/media/images/maine-eugenio-nude-pinay-model-pics/maine-eugenio-nude-pinay-model-pics0.png',
+            'tits' : "http://www.sexytitflash.com/bigimages/very%20big%20tits%2092619412%20153.jpg",
+            'Gerome slave market' : 'https://upload.wikimedia.org/wikipedia/commons/7/7f/Geromeslavemarket.jpg',
+            'September Morn' : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Paul_Chabas_September_Morn_The_Metropolitan_Museum_of_Art.jpg/1280px-Paul_Chabas_September_Morn_The_Metropolitan_Museum_of_Art.jpg",
+            'Three Girls Bathing' : "https://i.pinimg.com/originals/58/86/ba/5886ba57d9e13b48ab52bf6b7905fd7f.jpg",
+            'french postcard' : "https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/nude-woman-woman-posed-on-plaster-stand-back-view-1900-french-nude-postcard.jpg",
+            'Zorn In Gopsmor 1905' : 'https://upload.wikimedia.org/wikipedia/commons/d/de/Zorn_In_Gopsmor_1905.jpg',
+            "nude by water's edge" : "https://a.1stdibscdn.com/archivesE/upload/a_812/1488797980582/Saal_Georg_E_Otta_Before_Bathing_forWEB_Hi_res_master.jpg",
+            "Marguerie_Arosa_Baigneuse" : "https://upload.wikimedia.org/wikipedia/commons/e/e1/Marguerie_Arosa_Baigneuse.jpg",
+            'In The Water' : "https://preview.redd.it/b3j06khev9q61.jpg?width=640&crop=smart&auto=webp&s=939ad8e09299096c149260a99ddf08812f6434bb",
+            "The Pearls of Aphrodite (1907)" : "https://i.redd.it/s1vt4ucic0161.jpg",
+            "Geburt der Aphrodite" : "https://external-preview.redd.it/7OB_DMjQnmtr5T-FRlt2Pwd5Xss38vDh98Z7pR557JM.jpg?auto=webp&s=19f53f119a7f1bbd4a19aec970c91429c2af1ad1",
+            'a roman slave market' : "https://ae01.alicdn.com/kf/HTB1olOxacfrK1Rjy1Xdq6yemFXao.jpg",
+            'Lady reclining' : "https://upload.wikimedia.org/wikipedia/commons/8/8d/Julian_Mandel_4.jpg",
+            'weiblicher Akt' : "https://upload.wikimedia.org/wikipedia/commons/1/1d/Weiblicher_Akt01.jpg",
+            "Moorish Bath" : "https://1.bp.blogspot.com/-jcQET0BnUf0/XwoCEH4KL5I/AAAAAAAAF0g/LCWRhaeS_rYTmOhu4PV7SQl46lcGFJjnwCLcBGAsYHQ/s1600/moorish%2Bbath.jpg",
+
+        }
+
+        function renderImage(src, label, artworks) {
+
+            let a = document.createElement('a')
+            a.href = src
+            a.target = '_blank'
+            let img = document.createElement('img')
+            img.src = src
+
+            //Generate div containing image and label
+            let container = document.createElement('div')
+            container.appendChild(document.createTextNode(label))
+            container.appendChild(document.createElement('br'))
+
+            a.appendChild(img)
+            container.appendChild(a)
+
+
+            contentDiv.appendChild(container)
+        }
+
+        function renderImagesFromObject(artworks) {
+            Object.keys(artworks).forEach(element => {
+                renderImage(artworks[element], element)
+            })
+        }
+
+        renderImagesFromObject(imgs)
+    </script>
+</body>
+</html>
